@@ -28,13 +28,13 @@ while True:
         gray_face = cv2.cvtColor(face_roi, cv2.COLOR_BGR2GRAY)
         
         # Resize face region to a fixed size compatible with the face recognizer model
-        resized_face = cv2.resize(gray_face, (100, 100))
+        resized_face = cv2.resize(gray_face, (200, 200))
         
         # Predict the identity of the face
         label, confidence = face_recognizer.predict(resized_face)
         
         # Display the predicted label on the detected face region
-        cv2.putText(video_frame, f"Person: {label}", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
+        cv2.putText(video_frame, f"Person: {label} {int(confidence)}", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
         cv2.rectangle(video_frame, (x, y), (x+w, y+h), (0, 255, 0), 4)
 
     cv2.imshow("My Face Detection Project", video_frame)
