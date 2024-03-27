@@ -38,7 +38,7 @@ for file in directory.iterdir():
             
 
 
-
+print(len(faces),len(ids))
 
 face_recognizer.train(faces,np.array(ids))
 
